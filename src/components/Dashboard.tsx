@@ -2,16 +2,32 @@
 
 import { trpc } from '@/app/_trpc/client';
 import UploadButton from './UploadButton';
-import { Ghost, Plus, MessageSquare, Trash } from 'lucide-react';
+import { Ghost, Plus, MessageSquare, Trash, Loader2 } from 'lucide-react';
 import Skeleton from 'react-loading-skeleton';
 import Link from 'next/link';
 import { format } from 'date-fns';
 import { Button } from './ui/button';
+import { useState } from 'react';
 
 const Dashboard = () => {
+  const [currentlyDeletingFile, setCurrentlyDeletingFile] = useState<
+    string | null
+  >(null);
+  const utils = trpc.useContext();
+
   const { data: files, isLoading } = trpc.getUserFiles.useQuery();
 
-  const { mutate: deleteFile } = trpc.deleteFile.useMutation();
+  const { mutate: deleteFile } = trpc.deleteFile.useMutation({
+    onSuccess: () => {
+      utils.getUserFiles.invalidate();
+    },
+    onMutate({ id }) {
+      setCurrentlyDeletingFile(id);
+    },
+    onSettled() {
+      setCurrentlyDeletingFile(null);
+    },
+  });
 
   return (
     <main className="mx-auto max-w-700xl md:p-10">
@@ -68,7 +84,11 @@ const Dashboard = () => {
                     variant="destructive"
                   >
                     {' '}
-                    <Trash className="h-4 w-4 " />{' '}
+                    {currentlyDeletingFile === file.id ? (
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                    ) : (
+                      <Trash className="h-4 w-4 " />
+                    )}{' '}
                   </Button>
                 </div>
               </li>
