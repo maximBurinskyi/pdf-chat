@@ -69,7 +69,7 @@ const Dashboard = () => {
                 <div className="px-6 mt-4 grid grid-cols-3 place-items-center py-2 gap-6 text-xs text-zinc-500">
                   <div className="flex itemsc-center gap-2">
                     <Plus className="h-4 w-4" />
-                    {format(new Date(file.createAt), 'MMM yyyy')}
+                    {format(new Date(file.createdAt), 'MMM yyyy')}
                     {/* {format(new Date(2014, 1, 11), 'yyyy-MM-dd')} */}
                   </div>
 
