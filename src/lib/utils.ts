@@ -13,8 +13,8 @@ export function absoluteUrl(path: string) {
 }
 
 export function constructMetadata({
-  title = 'Quiller - the SaaS for smart analysts and students',
-  description = 'Quiller is an open-source software to make chatting to your PDF files easy.',
+  title = 'Quiller - smart analytics',
+  description = 'Quiller is a software to make chatting to your PDF files easy.',
   image = '/thumbnail.png',
   icons = '/favicon.ico',
   noIndex = false,
