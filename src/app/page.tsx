@@ -159,8 +159,8 @@ export default function Home() {
           </p>
         </div>
         <h1 className="max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl">
-          Chat with your <span className="text-blue-600">documents</span> in
-          seconds.
+          PDF AI analytis via chat with your{' '}
+          <span className="text-blue-600">documents</span> in seconds.
         </h1>
         <p className="mt-5 max-w-prose text-zinc-700 sm:text-lg">
           Quiller allows you to have conversations with any PDF document. Simply
