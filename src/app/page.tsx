@@ -164,7 +164,7 @@ export default function Home() {
         </h1>
         <p className="mt-5 max-w-prose text-zinc-700 sm:text-lg">
           Quiller allows you to have conversations with any PDF document. Simply
-          upload your file and start asking questions right away.
+          upload your file here and start asking questions right away.
         </p>
 
         <Link
