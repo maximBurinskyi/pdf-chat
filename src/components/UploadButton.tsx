@@ -11,6 +11,7 @@ import { useUploadThing } from '@/lib/uploadthing';
 import { useToast } from './ui/use-toast';
 import { trpc } from '@/app/_trpc/client';
 import { useRouter } from 'next/navigation';
+import { uploadToS3 } from '@/lib/s3';
 
 const UploadDropzone = ({ isSubscribed }: { isSubscribed: boolean }) => {
   const router = useRouter();
@@ -57,6 +58,9 @@ const UploadDropzone = ({ isSubscribed }: { isSubscribed: boolean }) => {
 
         // handle file uploading
         const res = await startUpload(acceptedFile);
+        // uncoment to load on s3
+        // const data = await uploadToS3(acceptedFile[0]);
+        // console.log('aaaaaaa:', data);
 
         if (!res) {
           return toast({
