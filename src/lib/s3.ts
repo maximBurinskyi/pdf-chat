@@ -1,3 +1,4 @@
+import { db } from '@/db';
 import AWS from 'aws-sdk';
 export async function uploadToS3(file: File) {
   try {
@@ -28,8 +29,18 @@ export async function uploadToS3(file: File) {
       })
       .promise();
 
-    await upload.then((data) => {
+    await upload.then(async (file) => {
       console.log('successfully uploaded to S3!', file_key);
+
+      // const createdFile = await db.file.create({
+      //   data: {
+      //     key: file.key,
+      //     name: file.name,
+      //     // userId: metadata.userId,
+      //     url: file.url,
+      //     uploadStatus: 'SUCCESS',
+      //   },
+      // });
     });
 
     return Promise.resolve({

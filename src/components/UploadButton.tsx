@@ -59,8 +59,8 @@ const UploadDropzone = ({ isSubscribed }: { isSubscribed: boolean }) => {
         // handle file uploading
         const res = await startUpload(acceptedFile);
         // uncoment to load on s3
-        // const data = await uploadToS3(acceptedFile[0]);
-        // console.log('aaaaaaa:', data);
+        // const res = await uploadToS3(acceptedFile[0]);
+        // console.log('aaaaaaa:', res);
 
         if (!res) {
           return toast({
