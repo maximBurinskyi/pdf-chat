@@ -38,13 +38,7 @@ export function constructMetadata({
         },
       ],
     },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [image],
-      creator: 'me',
-    },
+
     icons,
     metadataBase: new URL('https://quill-jet.vercel.app'),
     themeColor: '#FFF',
