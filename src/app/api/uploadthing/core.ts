@@ -132,6 +132,15 @@ const middleware = async () => {
   if (!user || !user.id) throw new Error('Unauthorized');
 
   const subscriptionPlan = await getUserSubscriptionPlan();
+  const createdFile = await db.file.create({
+    data: {
+      key: file.key,
+      name: file.name,
+      userId: metadata.userId,
+      url:  file.url,
+      uploadStatus: 'SUCCESS',
+    },
+  });
 
   return { subscriptionPlan, userId: user.id };
 };
