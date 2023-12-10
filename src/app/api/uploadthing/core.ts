@@ -147,8 +147,8 @@ const onUploadComplete = async ({
     url: string;
   };
 }) => {
-  console.log(metadata)
-  console.log(file)
+  console.log('metadat:', metadata);
+  console.log('file:', file);
   const isFileExist = await db.file.findFirst({
     where: {
       key: file.key,
@@ -162,15 +162,13 @@ const onUploadComplete = async ({
       key: file.key,
       name: file.name,
       userId: metadata.userId,
-      url:  file.url,
+      url: file.url,
       uploadStatus: 'PROCESSING',
     },
   });
 
   try {
-    const response = await fetch(
-      file.url
-    );
+    const response = await fetch(file.url);
 
     const blob = await response.blob();
 
