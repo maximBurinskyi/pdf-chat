@@ -5,12 +5,12 @@ import { ourFileRouter } from './core';
 // Export routes for Next App Router
 export const { GET, POST } = createNextRouteHandler({
   router: ourFileRouter,
-  // config: {
-  //   uploadthingId: 'unchdktqq2',
-  //   uploadthingSecret:
-  //     'sk_live_702f5a16abbc7ed37277b5db316d0574c41922cc47ec680a1e92e740aa280b59',
-  //   callbackUrl: 'https://pdf-chat-2mpk.vercel.app/',
-  // },
+  config: {
+    uploadthingId: 'booye6lool',
+    uploadthingSecret:
+      'sk_live_2087cbd679cda3c0f9c5afb96b4bc126ec3da28c023b4552f17409e7b76aa9d9',
+    callbackUrl: 'https://pdf-chat-2mpk.vercel.app/',
+  },
 });
 
 // Your app is running behind a reverse proxy such as Nginx.
