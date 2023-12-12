@@ -6,10 +6,9 @@ import { ourFileRouter } from './core';
 export const { GET, POST } = createNextRouteHandler({
   router: ourFileRouter,
   config: {
-    uploadthingId: 'booye6lool',
-    uploadthingSecret:
-      'sk_live_2087cbd679cda3c0f9c5afb96b4bc126ec3da28c023b4552f17409e7b76aa9d9',
-    callbackUrl: 'https://pdf-chat-2mpk.vercel.app/api/uploadthing',
+    uploadthingId: process.env.UPLOADTHING_APP_ID,
+    uploadthingSecret: process.env.UPLOADTHING_SECRET,
+    callbackUrl: `${process.env.URL}/api/uploadthing`,
   },
 });
 
