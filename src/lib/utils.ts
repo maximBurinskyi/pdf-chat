@@ -39,7 +39,7 @@ export function constructMetadata({
     },
 
     icons,
-    metadataBase: new URL('https://quill-jet.vercel.app'),
+    metadataBase: new URL('https://pdf-chat-2mpk.vercel.app/'),
     themeColor: '#FFF',
     ...(noIndex && {
       robots: {
