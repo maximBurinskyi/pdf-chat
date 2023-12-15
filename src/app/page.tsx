@@ -148,16 +148,24 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { buttonVariants } from '@/components/ui/button';
 import Image from 'next/image';
+import {
+  LoginLink,
+  RegisterLink,
+  getKindeServerSession,
+} from '@kinde-oss/kinde-auth-nextjs/server';
 
 export default function Home() {
+  const { getUser } = getKindeServerSession();
+  const user = getUser();
+
   return (
     <>
       <MaxWidthWrapper className="mb-12 mt-28 sm:mt-40 flex flex-col items-center justify-center text-center">
-        <div className="mx-auto mb-4 flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full border border-gray-200 bg-white px-7 py-2 shadow-md backdrop-blur transition-all hover:border-gray-300 hover:bg-white/50">
-          {/* <p className="text-sm font-semibold text-gray-700">
+        {/* <div className="mx-auto mb-4 flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full border border-gray-200 bg-white px-7 py-2 shadow-md backdrop-blur transition-all hover:border-gray-300 hover:bg-white/50">
+           <p className="text-sm font-semibold text-gray-700">
             Quiller is now public!
-          </p> */}
-        </div>
+          </p> 
+        </div> */}
         <h1 className="max-w-4xl text-5xl font-bold md:text-6xl lg:text-7xl">
           PDF AI analytics via chat with your{' '}
           <span className="text-blue-600">documents</span> in seconds.
@@ -167,7 +175,7 @@ export default function Home() {
           upload your file here and start asking questions right away.
         </p>
 
-        <Link
+        {/* <Link
           className={buttonVariants({
             size: 'lg',
             className: 'mt-5',
@@ -176,7 +184,67 @@ export default function Home() {
           target="_blank"
         >
           Get started <ArrowRight className="ml-2 h-5 w-5" />
-        </Link>
+        </Link> */}
+        <div className="hidden items-center space-x-4 sm:flex">
+          {!user ? (
+            <>
+              {/* <Link
+                href="/pricing"
+                className={buttonVariants({
+                  variant: 'ghost',
+                  size: 'sm',
+                })}
+              >
+                Pricing
+              </Link> */}
+
+              {/* <LoginLink
+                className={buttonVariants({
+                  variant: 'ghost',
+                  size: 'sm',
+                })}
+              >
+                Sign in
+              </LoginLink> */}
+              <RegisterLink
+                className={buttonVariants({
+                  size: 'sm',
+                })}
+              >
+                Get started <ArrowRight className="ml-1.5 h-5 w-5" />
+              </RegisterLink>
+            </>
+          ) : (
+            <>
+              <RegisterLink
+                className={buttonVariants({
+                  size: 'sm',
+                })}
+              >
+                Get started <ArrowRight className="ml-1.5 h-5 w-5" />
+              </RegisterLink>
+              {/* <Link
+                href="/dashboard"
+                className={buttonVariants({
+                  variant: 'ghost',
+                  size: 'sm',
+                })}
+              >
+                Dashboard
+              </Link> */}
+
+              {/* <UserAccountNav
+                  name={
+                    !user.given_name || !user.family_name
+                      ? 'Your Account'
+                      : `${user.given_name} ${user.family_name}`
+                  }
+                  email={user.email ?? ''}
+                  imageUrl={user.picture ?? ''}
+                /> */}
+            </>
+          )}
+        </div>
       </MaxWidthWrapper>
 
       {/* value proposition section */}
