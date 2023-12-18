@@ -8,6 +8,7 @@ import { PineconeStore } from 'langchain/vectorstores/pinecone';
 import { NextRequest } from 'next/server';
 
 import { OpenAIStream, StreamingTextResponse } from 'ai';
+export const maxDuration = 30;
 
 export const POST = async (req: NextRequest) => {
   // endpoint for asking a question to a pdf file
